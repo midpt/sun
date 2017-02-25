@@ -113,6 +113,10 @@
 	
 	}  
 
+	$(document).on('touchstart', function() {
+		documentClick = true;
+	});	
+	  
   $( function() {
 		$( "#datepicker" ).datepicker({
 			dateFormat: "dd-M-yy",
