@@ -1,0 +1,508 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Service Particulars Form</title>
+
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <style>
+		form {
+		  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+		  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+		  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+		  margin: auto;
+		  position: relative;
+		  width: 550px;
+		  height: 1250px;
+		  font-family: Tahoma, Geneva, sans-serif;
+		  font-size: 14px;
+		  font-style: italic;
+		  line-height: 24px;
+		  font-weight: bold;
+		  color: #2F4F4F; /* #09C;  */
+		  text-decoration: none;
+		  border-radius: 10px;
+		  padding: 10px;
+		  border: 1px solid #999;
+		  border: inset 1px solid #333;
+		  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		}
+
+		input {
+		  width: 375px;
+		  display: block;
+		  border: 1px solid #999;
+		  height: 25px;
+		  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		}
+
+		textarea#feedback {
+		  width: 375px;
+		  height: 150px;
+		  display: block;
+		}
+
+		button {
+		  width: 100px;
+		  position: absolute;
+		  right: 20px;
+		  bottom: 20px;
+		  background: #09C;
+		  color: #fff;
+		  font-family: Tahoma, Geneva, sans-serif;
+		  height: 30px;
+		  border-radius: 15px;
+		  border: 1p solid #999;
+		}
+
+		input.button:hover {
+		  background: #fff;
+		  color: #09C;
+		}
+
+		input.button:hover {
+		  background: #fff;
+		  color: #09C;
+		}
+  </style>
+
+ <!--  <link rel="stylesheet" href="css/style.css"> -->
+
+<!--   <script src="js/jquery-1.12.4.js"></script> -->
+  
+   <script src="js/jquery-2.0.2.js"></script>
+   <script src="js/jquery-ui.js"></script>
+   <script type="text/javascript" src="js/LunarSolarConverter.js"></script>
+  <script type="text/javascript">
+  
+  //---save the selected solar day, month and year
+  var selSolarDay=""  
+  var selSolarMth=0;
+  var selSolarYr=""
+  
+  	function convertIt(d,m,y){
+	    var retary=[];
+		var content = "";
+		var converter = new LunarSolarConverter();
+		var solar = new Solar();
+		solar.solarYear = Number(y);;
+		solar.solarMonth = Number(m);;
+		solar.solarDay = Number(d);
+		content += "<br>" + dump(solar);
+		var lunar = converter.SolarToLunar(solar);
+		content += "<br>" + dump(lunar);
+		solar = converter.LunarToSolar(lunar);
+		content += "<br>" + dump(solar);
+		//document.getElementById('content').innerHTML = content;
+		
+	
+		var lunData="";
+		var lunaObj = converter.SolarToLunar(solar);
+		lunData += "<br>" + getLunar(lunaObj);
+		//document.getElementById('luna').innerHTML = lunaData;	
+	
+	}  
+
+  $( function() {
+		$( "#datepicker" ).datepicker({
+			dateFormat: "dd-M-yy",
+			//---when a user make a calendar selection--
+			onSelect: function (dateText, inst) {
+				var ddmyr=dateText ;// eg   24-May-2017
+                var dary=[];
+                dary=ddmyr.split("-");
+				selSolarDay=dary[0];
+
+				var mInNum=0;
+				if (dary[1]==="Jan")mInNum=1;
+				  else if (dary[1]==="Feb")mInNum=2;
+				  else if (dary[1]==="Mar")mInNum=3;
+				  else if (dary[1]==="Apr")mInNum=4;
+				  else if (dary[1]==="May")mInNum=5;
+				  else if (dary[1]==="Jun")mInNum=6;
+				  else if (dary[1]==="Jul")mInNum=7;
+				  else if (dary[1]==="Aug")mInNum=8;
+				  else if (dary[1]==="Sep")mInNum=9;
+				  else if (dary[1]==="Oct")mInNum=10;
+				  else if (dary[1]==="Nov")mInNum=11;
+				  else if (dary[1]==="Dec")mInNum=12;
+				 else {} 
+				
+				 selSolarMth=mInNum;
+                 selSolarYr=dary[2];
+				
+				convertIt(dary[0],mInNum,dary[2]);
+				var hd=document.getElementById("heaven-day");
+				
+				hd.options[hd.selectedIndex].text=Number(lunaDay);
+				var hm=document.getElementById("heaven-month")
+                hm.options[hm.selectedIndex].text=Number(lunaMth);
+
+				//----update cig year
+				var selYear=dary[2];
+				//alert(selYear)
+				document.getElementById("cigyear").value=selYear-2012;
+
+				
+			}
+			
+			
+		  }
+		);
+	
+				   var isValid=false;
+					document.getElementById('form1').addEventListener('submit', function(evt){
+						evt.preventDefault(); // i.e don't submit first check for validity
+						//----check for entries validity
+						
+						
+						//---end of check
+						
+						
+						isValid=true;
+						if (isValid){ 
+						   $('form').unbind('submit').submit(); // actual submit
+						    writeCSV();
+						  }else {
+						    alert("not submitted");
+						  
+						  }
+						//alert("asd");
+
+					})
+		
+		
+   } );
+
+	var lunaDay="";
+	var lunaMth="";
+	var lunaYr="";
+	//--------convert solar to lunar
+    function getLunar(arr, level) {
+        var dumped_text = "";
+        if (!level) level = 0;
+
+        //The padding given at the beginning of the line.
+        var level_padding = "";
+        for (var j = 0; j < level + 1; j++) level_padding += "    ";
+
+        if (typeof(arr) != 'object') { //Stings/Chars/Numbers etc.
+            dumped_text = "===>" + arr + "<===(" + typeof(arr) + ")";
+        } else {
+            for (var item in arr) {
+                var value = arr[item];
+
+                if (typeof(value) == 'object') { //If it is an array,
+                    dumped_text += level_padding + "'" + item + "' ...\n";
+                    dumped_text += dump(value, level + 1);
+					console.log("Value is an array")
+                } else {
+				    console.log("Value NOT an array")
+					if (item.indexOf("lunarDay") !=-1){
+					  lunaDay=value;
+					  //document.getElementById('lunaday').innerHTML = "Lunar Day: "+lunaDay;
+					  }
+					if (item.indexOf("lunarMonth") !=-1){
+					  lunaMth=value;
+					 // document.getElementById('lunamth').innerHTML = "Lunar Month: "+lunaMth;
+					  }
+					if (item.indexOf("lunarYear") !=-1){
+					  lunaYr=value;
+					 // document.getElementById('lunayr').innerHTML = "Lunar Year: "+lunaYr;
+					  }
+					
+                    dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+                }
+            }
+        }
+        return dumped_text;
+    }	   
+	
+function writeCSV(){
+
+  var csv="SlideNo., SlideId,ShapeName, ShapeId, Label, Content\n";
+  var ele1="";
+  var ele2="";
+
+             //---in excel, the header will be  'Slide No.','SlideId', 'Shape-Name', 'Shape ID', 'Label', 'Content'
+
+				
+			  //---Assming there are 30 slides;  Note: NOT all Slides have text content to be unpdated ---- 
+			  // To create the slide data such as slide number, slideId, shapeName and shapeId, you need to
+			  //  open file 'sample-text.txt' in folder 'D:\PowerPt\Annie'
+             //---in excel, the header will be  'Slide No.','SlideId', 'Shape-Name', 'Shape ID', 'Label', 'Content'
+		   for (s=1;s<31;s++){
+		      
+		       //---slide 1 ---
+              if (s===1){
+			     var mthWords=""
+				 var dd=""
+			     if (selSolarMth===1)mthWords="January";
+			     if (selSolarMth===2)mthWords="Febuary";
+			     if (selSolarMth===3)mthWords="March";
+			     if (selSolarMth===4)mthWords="April";
+			     if (selSolarMth===5)mthWords="May";
+			     if (selSolarMth===6)mthWords="June";
+			     if (selSolarMth===7)mthWords="July";
+			     if (selSolarMth===8)mthWords="August";
+			     if (selSolarMth===9)mthWords="September";
+			     if (selSolarMth===10)mthWords="October";
+			     if (selSolarMth===11)mthWords="November";
+			     if (selSolarMth===12)mthWords="December";
+
+				 dd=selSolarDay+"-"+mthWords+"-"+selSolarYr;
+			     csv+=s+', 279, Rectangle 1, 2, Service Date, '+dd;
+			     csv+="\n";
+				 ele1=document.getElementById("heaven-month");
+				 ele2=document.getElementById("heaven-day");
+				 var hdate=ele1.options[ele1.selectedIndex].value+"."+ele2.options[ele2.selectedIndex].value
+				 var hdate=lunaDay+"."+lunaMth;
+				 var cigyr=document.getElementById("cigyear").value 
+				 var cigphrase='" by Heavenly Calendar\nin the '+cigyr+'th year of Cheon Il Guk"';
+
+			     csv+=s+", 279, Text Box 2, 5, Heaven date, "+hdate+cigphrase;
+				 csv+="\n";
+			   
+			  };//---slide 1
+		      //---slide 10 ---
+              if (s===10){
+				 ele1=document.getElementById("announce1");
+			     var res='"'+ele1.value+'"';
+			     csv+=s+", 411, TextBox 8, 9, Sharing And Annoucement Title, "+res;
+			     csv+="\n";
+			  
+			  };//-----slide 10
+		      //---slide 11 ---
+              if (s===11){
+				 ele1=document.getElementById("eventtitle");
+			     var res=ele1.value;
+			     csv+=s+", 424, TextBox 6, 7, Event Title, "+res;
+			     csv+="\n";
+				 ele1=document.getElementById("acontent1");
+			     res='"'+ele1.value+'"';
+			     csv+=s+', 424, Rectangle 7, 8, Event Content, '+res;
+			     csv+="\n";
+			  
+			  };//-----slide 11		 
+		      //---slide 14 ---
+              if (s===14){
+				 ele1=document.getElementById("speech");
+			     var res='"'+ele1.value+'"';
+			     csv+=s+", 410, Text Box 4, 6, Speech Sharing Title, "+res;
+			     csv+="\n";
+
+			  
+			  };//-----slide 14	
+
+		  };////---loop thru all columns in current row
+			
+			
+	var dwn=document.getElementById("dwnload")
+	var fname="abc.csv";
+	dwn.innerHTML="<a href='"+"data:text/csv;charset=utf-8," + encodeURI(csv)+"'"+"target=_blank"+" download='"+fname+"'"+" download"+">SaveFile</a>";
+	
+				
+
+};//-------writeCSV()--------
+   
+  </script>
+
+</head>
+
+<body>
+
+ 
+<form id="form1">
+	<div>
+	<label>
+		<span >Service Date: </span>
+		<input type="text" id="datepicker" >
+	</label>
+&nbsp; &nbsp; &nbsp; &nbsp; 
+	<label>
+	<span >Heavenly Month: </span>
+	 <select id="heaven-month" class="heaven-month" >
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>  
+		  <option value="9">9</option>
+		  <option value="10">10</option>
+		  <option value="11">11</option>
+		  <option value="12">12</option>   
+	  </select>
+	</label>
+
+ &nbsp; 
+	<label>
+	<span>Heavenly Day:  </span>
+	 <span >
+	   <select id="heaven-day" class="heaven-day">
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>  
+		  <option value="9">9</option>
+		  <option value="10">10</option>
+		  <option value="11">11</option>
+		  <option value="12">12</option>   
+		  <option value="13">13</option>
+		  <option value="14">14</option>
+		  <option value="15">15</option> 
+		  <option value="16">16</option>
+		  <option value="17">17</option>   
+		  <option value="18">18</option>
+		  <option value="19">19</option>
+		  <option value="20">20</option> 
+		  <option value="21">21</option> 
+		  <option value="22">22</option> 
+		  <option value="23">23</option> 
+		  <option value="24">24</option> 
+		  <option value="25">25</option> 
+		  <option value="26">26</option> 
+		  <option value="27">27</option> 
+		  <option value="28">28</option> 
+		  <option value="29">29</option> 
+		  <option value="30">30</option> 
+         </select>
+      </span>
+ 	</label>
+ 
+
+ &nbsp;  &nbsp; 
+<!-- <a  href="http://www.prokerala.com/general/calendar/chinese-year-converter.php" target="_blank">English Date to Heavenly Date conversion reference </a> -->
+<p></p>
+
+	<label>
+		<input style="display:inline; width:30px;"  type="text" id="cigyear" value="" size="3" >
+		th year of Cheon Il Guk
+ 	</label>
+<br/><br/>
+	<label>
+		<span  >Service Name: </span>
+		<span><input type="text" id="sername"   value="SUNDAY FAMILY GATHERING"/></span>
+ 	</label>
+
+<br/><br/>
+	<label>
+		<span >Speech Sharing Title:  &nbsp;  &nbsp;  &nbsp; &nbsp; </span>
+		<span><input type="text"  id="speech" size="60" value="Home Group is the Launching Pad to Heaven"></span>
+ 	</label>
+<br/>
+	<label>
+		<span >Speech Sharing Speaker: </span>
+		<input type="text" id="speaker" class="inpt" size="50" value="Mr so and so">
+ 	</label>
+	
+<br/><br/>
+	<label>
+		<span style="font-weight: bold;" class="lable">Sharing And Annoucement Title: </span>
+		<input class="inpt" type="text" id="announce1" size="40" value="Door to Door Visitation Report">
+ 	</label>
+	
+<br/>
+	<label>
+		<span >Sharing And Annoucement Content:</span> 
+	   <textarea id="acontent1" rows="3" cols="50">
+			  ...by so and so
+		</textarea> 
+ 	</label>
+	
+	
+	
+<br/><br/><br/>
+	<label>
+		<span >Event Title:  &nbsp;  &nbsp;  &nbsp;  &nbsp; </span>
+		 <input type="text" id="eventtitle" value="Event">
+ 	</label>		 
+		 
+	<label>
+		<p >Event Content: </p>
+		<textarea idea="acontent1" rows="3" cols="50">
+		 ...by so and so
+		</textarea> 
+ 	</label>	
+	
+	
+<br/><br/><br/>
+	<label>
+		<span >Song Dedication: </span>
+		<input type="text" id="songdedication" size="60" value='"Edelweiss" by YG'></span>
+ 	</label>		
+		
+
+	<label>
+		<p style="font-weight: bold;" class="lable">Song Selection: </p>
+		  <select class="inpt" id="holy-song1" class="holy-song1">
+			  <option value="By the spring of life">By the spring of life</option>
+			  <option value="Brother Sun and sister Moon">Brother Sun and sister Moon</option>
+			  <option value="Day of glory">Day of glory</option>
+			  <option value="Grace of the Holy Garden">Grace of the Holy Garden</option>
+			  <option value="He has called me">He has called me</option>
+			  <option value="Heart of the Father">Heart of the Father</option>
+			  <option value="Light in the East">Light in the East</option>
+			  <option value="Light of Grace">Light of Grace</option>  
+			  <option value="March of the New Age">March of the New Age</option>
+			  <option value="Mission">Mission</option>
+			  <option value="My Cross">My Cross</option>
+			  <option value="My Offering">My Offering</option>   
+			  <option value="New Song of Inspiration">New Song of Inspiration</option>
+			  <option value="O My child come home again">O My child come home again</option>
+			  <option value="The Lord has come">The Lord has come</option> 
+			  <option value="Pledge">Pledge</option>
+			  <option value="Shining Fatherland">Shining Fatherland</option>   
+			  <option value="Song of the banquet">Song of the banquet</option>
+			  <option value="Our Forefathers">Our Forefathers ( usually play after the unison prayer)</option>
+
+		</select>
+ 	</label>
+
+<br/><br/><br/>
+
+ 	<label>
+		<span >Special Thanks Title: </span>
+		<input type="text" id="thankstitle" size="60" value='Special Thanks To Our Shikku'>
+ 	</label>		
+		
+<br/>
+ 	<label>
+		<span style="font-weight: bold;" class="lable">Special Thanks Content: </span>
+		<input class="inpt" type="text" id="thankscontent" size="100" value='Preparation of Lunch   .   Sunday School
+              Translation   .   Area Cleaning   .   Attendance'></span>
+ 	</label>
+	
+    <label>
+
+      <button type="submit"  >Submit</button>
+    </label>	
+	
+	<label>
+       <span id="dwnload"></span>	  
+	</label>
+	
+	
+ </div>
+</form>
+
+</body>
+
+</html>
+
