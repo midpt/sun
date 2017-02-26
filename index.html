@@ -152,17 +152,17 @@ function getDayMthYr(dtxt){
 				 selSolarMth=mInNum;
                  selSolarYr=dary[2];
 				
-				convertIt(dary[0],mInNum,dary[2]);
+//				convertIt(dary[0],mInNum,dary[2]);
 				var hd=document.getElementById("heaven-day");
 				
-				hd.options[hd.selectedIndex].text=Number(lunaDay);
+//				hd.options[hd.selectedIndex].text=Number(lunaDay);
 				var hm=document.getElementById("heaven-month")
-                hm.options[hm.selectedIndex].text=Number(lunaMth);
+//                hm.options[hm.selectedIndex].text=Number(lunaMth);
 
 				//----update cig year
 				var selYear=dary[2];
 				//alert(selYear)
-				document.getElementById("cigyear").value=selYear-2012;
+//				document.getElementById("cigyear").value=selYear-2012;
 
 
 };//-----getDayMthYr	
@@ -184,7 +184,7 @@ $(document).ready(function () {
 					// alert("on select");
 				 //$(this).off( "focus" );
 				 document.getElementById("sername").focus();
-			    // getDayMthYr(dateText);
+			    getDayMthYr(dateText);
 
     
 				
