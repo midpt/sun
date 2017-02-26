@@ -115,15 +115,15 @@
 		solar.solarDay = Number(d);
 		content += "<br>" + dump(solar);
 		var lunar = converter.SolarToLunar(solar);
-		content += "<br>" + dump(lunar);
+//		content += "<br>" + dump(lunar);
 		solar = converter.LunarToSolar(lunar);
-		content += "<br>" + dump(solar);
+//		content += "<br>" + dump(solar);
 		//document.getElementById('content').innerHTML = content;
 		
 	
 		var lunData="";
 		var lunaObj = converter.SolarToLunar(solar);
-		lunData += "<br>" + getLunar(lunaObj);
+	//	lunData += "<br>" + getLunar(lunaObj);
 		//document.getElementById('luna').innerHTML = lunaData;	
 	
 	}  
