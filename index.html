@@ -181,9 +181,10 @@ $(document).ready(function () {
 			autoclose: true,
 			//---when a user make a calendar selection--
 			onSelect: function (dateText, inst) {
-					 alert("on select");
-			  // getDayMthYr(dateText);
-               // $(this).off( "focus" );
+					// alert("on select");
+				 $(this).off( "focus" );
+			     getDayMthYr(dateText);
+
 
 				
 			}
