@@ -177,7 +177,6 @@ $(document).ready(function () {
   
   
 		$( "#datepicker" ).datepicker({
-		    hide:"",
 			dateFormat: "dd-M-yy",
 			//---when a user make a calendar selection--
 			onSelect: function (dateText, inst) {
@@ -189,7 +188,9 @@ $(document).ready(function () {
 			
 			
 		  }
-		);
+		).on('change', function(){
+          $('#datepicker').hide();
+         });
 	
 	      //$( "#datepicker").datepicker( "hide" );
 	
