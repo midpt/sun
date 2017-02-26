@@ -171,18 +171,25 @@ function getDayMthYr(dtxt){
 	
 	  
   $( function() {
+
+  // var evt = new CustomEvent('change');
+   //document.getElementById('datepicker').dispatchEvent(evt);
+  
+  
 		$( "#datepicker" ).datepicker({
 			dateFormat: "dd-M-yy",
 			//---when a user make a calendar selection--
 			onSelect: function (dateText, inst) {
 			   getDayMthYr(dateText)
-
+            
 				
 			}
 			
 			
 		  }
 		);
+	
+	      $( "#datepicker").datepicker( "hide" );
 	
 			   var isValid=false;
 				document.getElementById('form1').addEventListener('submit', function(evt){
