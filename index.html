@@ -182,7 +182,7 @@ $(document).ready(function () {
 			//---when a user make a calendar selection--
 			onSelect: function (dateText, inst) {
 			   getDayMthYr(dateText);
-                $(this).off( "focus" );
+               // $(this).off( "focus" );
 				
 			}
 
@@ -191,10 +191,10 @@ $(document).ready(function () {
 		  }
 		).on('change', function(){
 		
-          $('#datepicker').datepicker("hide");
+          //$('#datepicker').datepicker("hide");
          });
 		 
-		 $('#datepicker').focusout();
+		// $('#datepicker').focusout();
 	
 	      $( "#datepicker").datepicker( "hide" );
 		  
