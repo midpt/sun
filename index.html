@@ -181,8 +181,8 @@ $(document).ready(function () {
 			autoclose: true,
 			//---when a user make a calendar selection--
 			onSelect: function (dateText, inst) {
-					// alert("on select");
-				 $(this).off( "focus" );
+					 alert("on select");
+				 //$(this).off( "focus" );
 			     getDayMthYr(dateText);
 
 
@@ -199,7 +199,7 @@ $(document).ready(function () {
 		 
 		// $('#datepicker').focusout();
 	
-	      $( "#datepicker").datepicker( "hide" );
+	    //  $( "#datepicker").datepicker( "hide" );
 		  
 		 // ("#datepicker").on("blur", function(e) { $(this).off("focus").datepicker("hide"); });
 	
