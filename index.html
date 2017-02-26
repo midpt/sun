@@ -11,6 +11,7 @@
   <title>Service Particulars Form</title>
 
   <link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet"  href="css/jquery.ui.datepicker.mobile.css" />   
   <style>
 		form {
 		  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
@@ -82,6 +83,10 @@
   
    <script src="js/jquery-2.0.2.js"></script>
    <script src="js/jquery-ui.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+	<!-- <script src="jQuery.ui.datepicker.js"></script> -->
+	<script src="js/jquery.ui.datepicker.mobile.js"></script>   
+   
    <script type="text/javascript" src="js/LunarSolarConverter.js"></script>
   <script type="text/javascript">
   
@@ -113,9 +118,15 @@
 	
 	}  
 
+	
+		$( document ).bind( "mobileinit", function(){
+			$.mobile.page.prototype.options.degradeInputs.date = true;
+		});		
+	
 	$(document).on('touchstart', function() {
 		documentClick = true;
 	});	
+	
 	  
   $( function() {
 		$( "#datepicker" ).datepicker({
