@@ -87,15 +87,15 @@
 	<!-- <script src="jQuery.ui.datepicker.js"></script> -->
 	<script>
 		//reset type=date inputs to text
-		$( document ).bind( "mobileinit", function(){
-			$.mobile.page.prototype.options.degradeInputs.date = true;
-		});	
+	//	$( document ).bind( "mobileinit", function(){
+	//		$.mobile.page.prototype.options.degradeInputs.date = true;
+	//	});	
 	</script>
 	   
 	<!-- <script src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>	 -->
    <script src="js/jquery-ui.js"></script> 
 	<!-- <script src="js/jQuery.ui.datepicker.js"></script> -->
-	<script src="js/jquery.ui.datepicker.mobile.js"></script>   
+	<!-- <script src="js/jquery.ui.datepicker.mobile.js"></script>    -->
    
    <script type="text/javascript" src="js/LunarSolarConverter.js"></script>
   <script type="text/javascript">
@@ -198,7 +198,7 @@ $(document).ready(function () {
 	
 	      $( "#datepicker").datepicker( "hide" );
 		  
-		  ("#datepicker").on("blur", function(e) { $(this).off("focus").datepicker("hide"); });
+		 // ("#datepicker").on("blur", function(e) { $(this).off("focus").datepicker("hide"); });
 	
 			   var isValid=false;
 				document.getElementById('form1').addEventListener('submit', function(evt){
