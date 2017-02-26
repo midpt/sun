@@ -197,6 +197,8 @@ $(document).ready(function () {
 		 $('#datepicker').focusout();
 	
 	      $( "#datepicker").datepicker( "hide" );
+		  
+		  ("#datepicker").on("blur", function(e) { $(this).off("focus").datepicker("hide"); });
 	
 			   var isValid=false;
 				document.getElementById('form1').addEventListener('submit', function(evt){
