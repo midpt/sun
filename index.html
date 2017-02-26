@@ -127,17 +127,8 @@
 	
 	}  
 
-	
-	
-
-	
-	  
-  $( function() {
-		$( "#datepicker" ).datepicker({
-			dateFormat: "dd-M-yy",
-			//---when a user make a calendar selection--
-			onSelect: function (dateText, inst) {
-				var ddmyr=dateText ;// eg   24-May-2017
+function getDayMthYr(dtxt){
+				var ddmyr=dtxt ;// eg   24-May-2017
                 var dary=[];
                 dary=ddmyr.split("-");
 				selSolarDay=dary[0];
@@ -172,6 +163,19 @@
 				//alert(selYear)
 				document.getElementById("cigyear").value=selYear-2012;
 
+
+};//-----getDayMthYr	
+	
+
+	
+	  
+  $( function() {
+		$( "#datepicker" ).datepicker({
+			dateFormat: "dd-M-yy",
+			//---when a user make a calendar selection--
+			onSelect: function (dateText, inst) {
+			   getDayMthYr(dateText)
+
 				
 			}
 			
@@ -179,26 +183,26 @@
 		  }
 		);
 	
-				   var isValid=false;
-					document.getElementById('form1').addEventListener('submit', function(evt){
-						evt.preventDefault(); // i.e don't submit first check for validity
-						//----check for entries validity
-						
-						
-						//---end of check
-						
-						
-						isValid=true;
-						if (isValid){ 
-						   $('form').unbind('submit').submit(); // actual submit
-						    writeCSV();
-						  }else {
-						    alert("not submitted");
-						  
-						  }
-						//alert("asd");
+			   var isValid=false;
+				document.getElementById('form1').addEventListener('submit', function(evt){
+					evt.preventDefault(); // i.e don't submit first check for validity
+					//----check for entries validity
+					
+					
+					//---end of check
+					
+					
+					isValid=true;
+					if (isValid){ 
+					   $('form').unbind('submit').submit(); // actual submit
+						writeCSV();
+					  }else {
+						alert("not submitted");
+					  
+					  }
+					//alert("asd");
 
-					})
+				})
 		
 		
    } );
