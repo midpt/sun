@@ -178,6 +178,7 @@ $(document).ready(function () {
   
 		$( "#datepicker" ).datepicker({
 			dateFormat: "dd-M-yy",
+			autoclose: true,
 			//---when a user make a calendar selection--
 			onSelect: function (dateText, inst) {
 			   getDayMthYr(dateText)
