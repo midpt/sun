@@ -113,7 +113,7 @@
 		solar.solarYear = Number(y);;
 		solar.solarMonth = Number(m);;
 		solar.solarDay = Number(d);
-	alert("Inside convertIt. after solar.solarday");	
+//	alert("Inside convertIt. after solar.solarday");	
 		content += "<br>" + dump(solar);
 		var lunar = converter.SolarToLunar(solar);
 		content += "<br>" + dump(lunar);
@@ -124,6 +124,7 @@
 	
 		var lunData="";
 		var lunaObj = converter.SolarToLunar(solar);
+alert("Inside convertIt. be4 getLunar");		
 		lunData += "<br>" + getLunar(lunaObj);
 		//document.getElementById('luna').innerHTML = lunaData;	
 	
