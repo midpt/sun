@@ -113,6 +113,7 @@
 		solar.solarYear = Number(y);;
 		solar.solarMonth = Number(m);;
 		solar.solarDay = Number(d);
+	alert("Inside convertIt. after solar.solarday");	
 		content += "<br>" + dump(solar);
 		var lunar = converter.SolarToLunar(solar);
 		content += "<br>" + dump(lunar);
@@ -241,7 +242,7 @@ $(document).ready(function () {
         //The padding given at the beginning of the line.
         var level_padding = "";
         for (var j = 0; j < level + 1; j++) level_padding += "    ";
-alert("Inside getLunar. Be4 If typeof(arr)");
+//alert("Inside getLunar. Be4 If typeof(arr)");
 
         if (typeof(arr) != 'object') { //Stings/Chars/Numbers etc.
             dumped_text = "===>" + arr + "<===(" + typeof(arr) + ")";
