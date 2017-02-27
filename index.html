@@ -113,7 +113,8 @@
 		solar.solarYear = Number(y);;
 		solar.solarMonth = Number(m);;
 		solar.solarDay = Number(d);
-//	alert("Inside convertIt. after solar.solarday");	
+//	alert("Inside convertIt. after solar.solarday");
+     //--!!!!!!!Do not execute dump(), it will not work in Mobile !!!----	
 	//	content += "<br>" + dump(solar);
 //alert("Inside convertIt. be4 solartoLunar");		
 		var lunar = converter.SolarToLunar(solar);
@@ -126,10 +127,10 @@
 	
 		var lunData="";
 		var lunaObj = converter.SolarToLunar(solar);
-alert("Inside convertIt. after solarToLunar");		
+//alert("Inside convertIt. after solarToLunar");		
 		lunData += "<br>" + getLunar(lunaObj);
 		//document.getElementById('luna').innerHTML = lunaData;	
-alert("Inside convertIt. after getLunar");			
+//alert("Inside convertIt. after getLunar");			
 	
 	}  
 
@@ -255,8 +256,8 @@ $(document).ready(function () {
                 var value = arr[item];
 
                 if (typeof(value) == 'object') { //If it is an array,
-                    dumped_text += level_padding + "'" + item + "' ...\n";
-                    dumped_text += dump(value, level + 1);
+                  //  dumped_text += level_padding + "'" + item + "' ...\n";
+                  //  dumped_text += dump(value, level + 1);
 					console.log("Value is an array")
                 } else {
 				    console.log("Value NOT an array")
