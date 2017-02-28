@@ -396,7 +396,7 @@ function writeCSV(){
 				 ele1=document.getElementById("Unison2");
                  res=ele1.options[ele1.selectedIndex].value
 			     res='"'+ele1.value+'"';
-				 /---replace invisble newline with nothing
+				 //---replace invisble newline with nothing
 				 res=res.replace(/\r\n/g, '').replace(/[\r\n]/g, '');
 			     csv+=s+", 386, Picture 7, 8, Unison Dedication of Hearts Song 2, "+'"'+res+'"';
 			     csv+="\n";
