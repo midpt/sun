@@ -298,7 +298,11 @@ function writeCSV(){
 			  // To create the slide data such as slide number, slideId, shapeName and shapeId, you need to
 			  //  open file 'sample-text.txt' in folder 'D:\PowerPt\Annie'
              //---in excel, the header will be  'Slide No.','SlideId', 'Shape-Name', 'Shape ID', 'Label', 'Content'
-		   for (s=1;s<31;s++){
+
+		
+			 
+			 
+			 for (s=1;s<31;s++){
 		      
 		       //---slide 1 ---
               if (s===1){
@@ -390,14 +394,30 @@ function writeCSV(){
 			     res='"'+ele1.value+'\n'+'"';
 			     csv+=s+", 386, Picture 7, 8, Unison Dedication of Hearts Song 2, "+res;
 			     csv+="\n";
-
-			  
+		  
 			  };//-----slide 18			  
 			  
 			  
 			  
 		  };////---loop thru all columns in current row
 			
+			
+            //---get pledge number to readout
+			ele=document.getElementById("pledge");
+            var pldgNum=ele1.options[ele1.selectedIndex].value	
+            //----If a pledge number is selected, we need to make a pledge slide visible
+            //   The rest of the pledge slide should be hidden
+            //   You need to find out all the pledge slide number manually
+            //   The pledge number of each slide is listed below.  If there are
+            //   any changes, you need to update below if statements
+			
+			//----loop thru all the pledge slides and decide whether to hide or should
+			for (p=1; p<9; p++){
+              if (pldgNum==1){
+			       //slide number,slideid, na,na,                    ,s ' s means show; h means hide        
+			  // csv+="1,             386, na, na, show pledge slide, s";
+              }      			  
+			};//---
 			
 	var dwn=document.getElementById("dwnload")
 	var fname="abc.csv";
@@ -691,6 +711,8 @@ function writeCSV(){
 	
  </div>
 </form>
+
+<div id="dwnload"></div>
 
 </body>
 
