@@ -380,12 +380,28 @@ function writeCSV(){
 				 res2=ele2.value+'"';
 				 //---replace invisble newline with nothing
 				 res2=res2.replace(/\r\n/g, '').replace(/[\r\n]/g, '');
-			     csv+=s+", 410, Text Box 4, 6, Speech Sharing Title, "+res+res2;
+			     csv+=s+", 410, Text Box 4, 6, Speech Sharing Title, "+res+" "+res2;
 			     csv+="\n";
 
 			  
 			  };//-----slide 14	
 
+			  //-----slide 17
+              if (s===17){
+				 ele1=document.getElementById("thankstitle");
+				ele2=document.getElementById("thankscontent");
+			     res='"'+ele1.value+'"';
+				 res2='"'+ele2.value+'"';
+				 //---replace invisble newline with nothing
+				 res2=res2.replace(/\r\n/g, '').replace(/[\r\n]/g, '');
+			     csv+=s+", 408, Text Box 1, 12, Speech Sharing Title, "+res;
+			     csv+="\n";
+			     csv+=s+", 408, Text Box 1, 7, Special Thanks Content, "+res2;
+			     csv+="\n";
+
+			  
+			  };//-----slide 17				  
+			  
 		      //---slide 18 ---
               if (s===18){
 				 ele1=document.getElementById("Unison");
@@ -698,16 +714,16 @@ function writeCSV(){
 		<input type="text" id="songdedication" size="60" value='"Edelweiss" by YG'></span>
  	</label>		
 
-
+<br/><br/>
 
  	<label>
 		<span >Special Thanks Title: </span>
 		<input type="text" id="thankstitle" size="60" value='Special Thanks To Our Shikku'>
  	</label>			
-		
-<br/><br/>
+<br/>		
+
  	<label>
-		<span style="font-weight: bold;" class="lable">Special Thanks Content: </span>
+		<span style="font-weight: bold;" class="lable">Special Thanks Content: </span> <span style="font-size:10px; color:blue"> (You may leave it as it is) </span>
 		<input class="inpt" type="text" id="thankscontent" size="100" value='Preparation of Lunch   .   Sunday School
               Translation   .   Area Cleaning   .   Attendance'></span>
  	</label>
