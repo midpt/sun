@@ -329,9 +329,9 @@ function writeCSV(){
 				 var hdate=ele1.options[ele1.selectedIndex].value+"."+ele2.options[ele2.selectedIndex].value
 				 var hdate=lunaDay+"."+lunaMth;
 				 var cigyr=document.getElementById("cigyear").value 
-				 var cigphrase='" by Heavenly Calendar\nin the '+cigyr+'th year of Cheon Il Guk"';
+				 var cigphrase=' by Heavenly Calendar in the '+cigyr+'th year of Cheon Il Guk"';
 
-			     csv+=s+", 279, Text Box 2, 5, Heaven date, "+hdate+cigphrase;
+			     csv+=s+", 279, Text Box 2, 5, Heaven date, "+'"'+hdate+cigphrase+'"';
 				 csv+="\n";
 			   
 			  };//---slide 1
@@ -351,6 +351,8 @@ function writeCSV(){
 			     csv+="\n";
 				 ele1=document.getElementById("acontent1");
 			     res='"'+ele1.value+'"';
+				 //---replace invisble newline with nothing
+				 res=res.replace(/\r\n/g, '').replace(/[\r\n]/g, '');
 			     csv+=s+', 424, Rectangle 7, 8, Event Content, '+res;
 			     csv+="\n";
 			  
@@ -376,7 +378,9 @@ function writeCSV(){
 				 ele2=document.getElementById("speaker");
 			     res='"'+ele1.value+'\n'+'"';
 				 res2='"'+ele2.value+'"';
-			     csv+=s+", 410, Text Box 4, 6, Speech Sharing Title, "+res;
+				 //---replace invisble newline with nothing
+				 res2=res2.replace(/\r\n/g, '').replace(/[\r\n]/g, '');
+			     csv+=s+", 410, Text Box 4, 6, Speech Sharing Title, "+'"'+res+res2+'"';
 			     csv+="\n";
 
 			  
@@ -392,7 +396,9 @@ function writeCSV(){
 				 ele1=document.getElementById("Unison2");
                  res=ele1.options[ele1.selectedIndex].value
 			     res='"'+ele1.value+'"';
-			     csv+=s+", 386, Picture 7, 8, Unison Dedication of Hearts Song 2, "+res;
+				 /---replace invisble newline with nothing
+				 res=res.replace(/\r\n/g, '').replace(/[\r\n]/g, '');
+			     csv+=s+", 386, Picture 7, 8, Unison Dedication of Hearts Song 2, "+'"'+res+'"';
 			     csv+="\n";
 		  
 			  };//-----slide 18			  
