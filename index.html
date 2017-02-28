@@ -466,7 +466,7 @@ function writeCSV(){
 <form id="form1" onsubmit="submitButt()">
 	<div>
 	<label>
-		<span >Service Date: </span>
+		<span >Service Date: </span><span style="color:red; font-size:16px">* </span>
 		<input type="text" id="datepicker" >
 	</label>
 &nbsp; &nbsp; &nbsp; &nbsp; 
@@ -538,26 +538,27 @@ function writeCSV(){
  	</label>
 <br/><br/>
 	<label>
-		<span  >Service Name: </span>
+		<span  >Service Name: </span><span style="font-size:10px; color:blue"> (You may leave as it is) </span>
 		<span><input type="text" id="sername"   value="SUNDAY FAMILY GATHERING"/></span>
  	</label>
 
 <br/>
 	<label>
-		<span >Speech Sharing Title:  &nbsp;  &nbsp;  &nbsp; &nbsp; </span>
+		<span >Speech Sharing Title: &nbsp; </span><span style="color:red; font-size:16px">* </span>
 		<span><input type="text"  id="speech" size="60" value="Home Group is the Launching Pad to Heaven"></span>
  	</label>
 <br/>
 	<label>
-		<span >Speech Sharing Speaker: </span>
+		<span >Speech Sharing Speaker: </span><span style="color:red; font-size:16px">* </span>
 		<input type="text" id="speaker" class="inpt" size="50" value="Mr so and so">
  	</label>
 	
 <br/>		
 
 	<label>
-		<p style="font-weight: bold;" class="lable">Song of Shimjung 1: </p>
-		  <select class="inpt" id="Shimjung1" class="Shimjung1">
+		<span style="font-weight: bold;" class="lable">Song of Shimjung 1: </span><span style="color:red; font-size:16px">* </span>
+         <br/>
+		<select class="inpt" id="Shimjung1" class="Shimjung1">
 			  <option value="By the spring of life">By the spring of life</option>
 			  <option value="Brother Sun and sister Moon">Brother Sun and sister Moon</option>
 			  <option value="Day of glory">Day of glory</option>
@@ -584,7 +585,8 @@ function writeCSV(){
 <br/>
 
 	<label>
-		<p style="font-weight: bold;" class="lable">Song of Shimjung 2: </p>
+		<span style="font-weight: bold;" class="lable">Song of Shimjung 2: </span><span style="color:red; font-size:16px">* </span>
+		<br/>
 		  <select class="inpt" id="Shimjung2" class="Shimjung2">
 			  <option value="By the spring of life">By the spring of life</option>
 			  <option value="Brother Sun and sister Moon">Brother Sun and sister Moon</option>
@@ -611,8 +613,9 @@ function writeCSV(){
 <br/><br/>
 
 	<label>
-		<p style="font-weight: bold;" class="lable">Unison Dedication of Hearts Song 1: </p>
-		  <select class="inpt" id="Unison" class="Unison">
+		<span style="font-weight: bold;" class="lable">Unison Dedication of Hearts Song 1: </span> <span style="color:red; font-size:16px">* </span>
+         <br/>
+		<select class="inpt" id="Unison" class="Unison">
 			  <option value="By the spring of life">By the spring of life</option>
 			  <option value="Brother Sun and sister Moon">Brother Sun and sister Moon</option>
 			  <option value="Day of glory">Day of glory</option>
@@ -664,7 +667,7 @@ function writeCSV(){
 <br/><br/>	
 
  	<label>
-		<span >Pledge number to be read out : </span>
+		<span >Pledge number to be read out : </span><span style="color:red; font-size:16px">* </span>
 	   <select id="pledge" class="pledge">
 		  <option value="1">1</option>
 		  <option value="2">2</option>
@@ -696,12 +699,12 @@ function writeCSV(){
 	
 <br/><br/><br/>
 	<label>
-		<span >Event Title:    &nbsp; </span><span style="font-size:10px; color:blue"> (You may leave it as it is) </span>
+		<span >Event Title:    &nbsp; </span><span style="font-size:10px; color:blue"> (You may leave as it is) </span>
 		 <input type="text" id="eventtitle" value="Event">
  	</label>		 
 		 
 	<label>
-		<span>Event Content: </span><span style="font-size:10px; color:blue"> (You may leave it as it is) </span>
+		<span>Event Content: </span><span style="font-size:10px; color:blue"> (You may leave as it is) </span>
 		<br/>
 		<textarea idea="acontent1" rows="3" cols="50">
 		 ...by so and so
@@ -711,14 +714,14 @@ function writeCSV(){
 	
 <br/><br/><br/>
 	<label>
-		<span >Song Dedication: </span><span style="font-size:10px; color:blue"> (You may leave it as it is) </span>
+		<span >Song Dedication: </span><span style="font-size:10px; color:blue"> (You may leave as it is) </span>
 		<input type="text" id="songdedication" size="60" value='"Edelweiss" by YG'></span>
  	</label>		
 
 <br/><br/>
 
  	<label>
-		<span >Special Thanks Title: </span> <span style="font-size:10px; color:blue"> (You may leave it as it is) </span>
+		<span >Special Thanks Title: </span> <span style="font-size:10px; color:blue"> (You may leave as it is) </span>
 		<input type="text" id="thankstitle" size="60" value='Special Thanks To Our Shikku'>
  	</label>			
 <br/>		
