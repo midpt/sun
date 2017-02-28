@@ -287,6 +287,9 @@ function writeCSV(){
   var csv="SlideNo., SlideId,ShapeName, ShapeId, Label, Content\n";
   var ele1="";
   var ele2="";
+  var res="";
+  var res2="";
+  var res3="";
 
              //---in excel, the header will be  'Slide No.','SlideId', 'Shape-Name', 'Shape ID', 'Label', 'Content'
 
@@ -339,7 +342,7 @@ function writeCSV(){
 		      //---slide 11 ---
               if (s===11){
 				 ele1=document.getElementById("eventtitle");
-			     var res=ele1.value;
+			     res=ele1.value;
 			     csv+=s+", 424, TextBox 6, 7, Event Title, "+res;
 			     csv+="\n";
 				 ele1=document.getElementById("acontent1");
@@ -348,16 +351,51 @@ function writeCSV(){
 			     csv+="\n";
 			  
 			  };//-----slide 11		 
-		      //---slide 14 ---
+		      //---slide 12 ---
+              if (s===12){
+				 ele1=document.getElementById("Shimjung1");
+                 res=ele1.options[ele1.selectedIndex].value
+			     res='"'+ele1.value+'\n'+'"';
+			     csv+=s+", 402, Picture 21, 22, Song of Shimjung 1, "+res;
+			     csv+="\n";
+				 ele1=document.getElementById("Shimjung2");
+                 res=ele1.options[ele1.selectedIndex].value
+			     res='"'+ele1.value+'\n'+'"';
+			     csv+=s+", 402, Picture 20, 21, Song of Shimjung 2, "+res;
+			     csv+="\n";
+
+			  
+			  };//-----slide 12
+			  
               if (s===14){
 				 ele1=document.getElementById("speech");
-			     var res='"'+ele1.value+'"';
+				 ele2=document.getElementById("speaker");
+			     res='"'+ele1.value+'\n'+'"';
+				 res2='"'+ele2.value+'"';
 			     csv+=s+", 410, Text Box 4, 6, Speech Sharing Title, "+res;
 			     csv+="\n";
 
 			  
 			  };//-----slide 14	
 
+		      //---slide 18 ---
+              if (s===18){
+				 ele1=document.getElementById("Unison");
+                 res=ele1.options[ele1.selectedIndex].value
+			     res='"'+ele1.value+'\n'+'"';
+			     csv+=s+", 386, Picture 12, 13, Unison Dedication of Hearts Song 1, "+res;
+			     csv+="\n";
+				 ele1=document.getElementById("Unison2");
+                 res=ele1.options[ele1.selectedIndex].value
+			     res='"'+ele1.value+'\n'+'"';
+			     csv+=s+", 386, Picture 7, 8, Unison Dedication of Hearts Song 2, "+res;
+			     csv+="\n";
+
+			  
+			  };//-----slide 18			  
+			  
+			  
+			  
 		  };////---loop thru all columns in current row
 			
 			
@@ -524,7 +562,7 @@ function writeCSV(){
 <br/><br/>
 
 	<label>
-		<p style="font-weight: bold;" class="lable">Unison Dedication of Hearts Song: </p>
+		<p style="font-weight: bold;" class="lable">Unison Dedication of Hearts Song 1: </p>
 		  <select class="inpt" id="Unison" class="Unison">
 			  <option value="By the spring of life">By the spring of life</option>
 			  <option value="Brother Sun and sister Moon">Brother Sun and sister Moon</option>
@@ -549,7 +587,31 @@ function writeCSV(){
 		</select>
  	</label>
 		
+	<label>
+		<p style="font-weight: bold;" class="lable">Unison Dedication of Hearts Song 2: </p>
+		  <select class="inpt" id="Unison" class="Unison2">
+			  <option value="By the spring of life">By the spring of life</option>
+			  <option value="Brother Sun and sister Moon">Brother Sun and sister Moon</option>
+			  <option value="Day of glory">Day of glory</option>
+			  <option value="Grace of the Holy Garden">Grace of the Holy Garden</option>
+			  <option value="He has called me">He has called me</option>
+			  <option value="Heart of the Father">Heart of the Father</option>
+			  <option value="Light in the East">Light in the East</option>
+			  <option value="Light of Grace">Light of Grace</option>  
+			  <option value="March of the New Age">March of the New Age</option>
+			  <option value="Mission">Mission</option>
+			  <option value="My Cross">My Cross</option>
+			  <option value="My Offering">My Offering</option>   
+			  <option value="New Song of Inspiration">New Song of Inspiration</option>
+			  <option value="O My child come home again">O My child come home again</option>
+			  <option value="The Lord has come">The Lord has come</option> 
+			  <option value="Pledge">Pledge</option>
+			  <option value="Shining Fatherland">Shining Fatherland</option>   
+			  <option value="Song of the banquet">Song of the banquet</option>
+			  <option value="Our Forefathers">Our Forefathers ( usually play after the unison prayer)</option>
 
+		</select>
+ 	</label>
 <br/><br/>	
 
  	<label>
